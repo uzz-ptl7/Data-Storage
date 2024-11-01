@@ -10,6 +10,8 @@
 
     <p id="demo"></p>
 
+    <button id="loadData">Load Employees Data</button>
+
     <script>
         let text = '{"employees":[' + 
         '{ "firstName": "John", "lastName": "Doe" },' +
@@ -19,12 +21,26 @@
 
         let obj = JSON.parse(text);
 
-        let employeeList = "";
-        for (let i = 0; i < obj.employees.length; i++) {
-            employeeList += obj.employees[i].firstName + " " + obj.employees[i].lastName + "<br>";
+        localStorage.setItem("employeesData", text);
+
+        function loadEmployeesData() {
+            let storedData = localStorage.getItem("employeesData");
+            
+            if (storedData) {
+                let obj = JSON.parse(text);
+                let employeeList = "";
+                for (let i = 0; i < obj.employees.length; i++) {
+                    employeeList += obj.employees[i].firstName + " " + obj.employees[i].lastName + "<br>";
+                } 
+
+                document.getElementById("demo").innerHTML = employeeList;
+            } else {
+                document.getElementById("demo").innerHTML = "No data found";
+            }
         } 
 
-        document.getElementById("demo").innerHTML = employeeList;
+        document.getElementById("loadData").addEventListener("click", loadEmployeesData);
+         
         // document.getElementById("demo").innerHTML = obj.employees[0].firstName + " " + obj.employees[0].
         // lastName;
         
