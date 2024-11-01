@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Managment Information System</title>
+</head>
+<body>
+    <h1>Employees Data Loaded From JSON</h1>
+
+    <p id="demo"></p>
+
+    <script>
+        let text = '{"employees":[' + 
+        '{ "firstName": "John", "lastName": "Doe" },' +
+        '{ "firstName": "Anna", "lastName": "Smith" },' +
+        '{ "firstName": "Peter", "lastName": "Jones" }]}'; +
+        ']}'
+
+        let obj = JSON.parse(text);
+        document.getElementById("demo").innerHTML = obj.employees[0].firstName + " " + obj.employees[0].
+        lastName;
+        
+    </script>
+</body>
+</html>
