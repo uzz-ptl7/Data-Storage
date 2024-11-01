@@ -18,8 +18,15 @@
         ']}'
 
         let obj = JSON.parse(text);
-        document.getElementById("demo").innerHTML = obj.employees[0].firstName + " " + obj.employees[0].
-        lastName;
+
+        let employeeList = "";
+        for (let i = 0; i < obj.employees.length; i++) {
+            employeeList += obj.employees[i].firstName + " " + obj.employees[i].lastName + "<br>";
+        } 
+
+        document.getElementById("demo").innerHTML = employeeList;
+        // document.getElementById("demo").innerHTML = obj.employees[0].firstName + " " + obj.employees[0].
+        // lastName;
         
     </script>
 </body>
